@@ -37,8 +37,7 @@ public abstract class OnItemClickListener extends RecyclerView.SimpleOnItemTouch
                 }
             });
         }
-        mGestureDetector.onTouchEvent(e);
-        return true;
+        return mGestureDetector.onTouchEvent(e);
     }
 
     public abstract void onItemClick(View view, int position);

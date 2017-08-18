@@ -23,17 +23,22 @@ public abstract class OnItemClickListener extends RecyclerView.SimpleOnItemTouch
                 @Override
                 public boolean onSingleTapConfirmed(MotionEvent e) {
                     final View childView = rv.findChildViewUnder(e.getX(), e.getY());
-                    final int position = rv.getChildAdapterPosition(childView);
-                    onItemClick(childView, position);
-                    return true;
+                    if (childView != null) {
+                        final int position = rv.getChildAdapterPosition(childView);
+                        onItemClick(childView, position);
+                        return true;
+                    }
+                    return false;
                 }
 
                 @Override
                 public void onLongPress(MotionEvent e) {
                     super.onLongPress(e);
                     final View childView = rv.findChildViewUnder(e.getX(), e.getY());
-                    final int position = rv.getChildAdapterPosition(childView);
-                    onItemLongClick(childView, position);
+                    if (childView != null) {
+                        final int position = rv.getChildAdapterPosition(childView);
+                        onItemLongClick(childView, position);
+                    }
                 }
             });
         }
